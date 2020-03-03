@@ -108,7 +108,9 @@ public class EventBus {
     public static EventBus getDefault() {
         if (sDefaultBus == null) {
             synchronized (EventBus.class) {
-                sDefaultBus = new Builder(DESCRIPTOR).create();
+                if (sDefaultBus == null) {
+                    sDefaultBus = new Builder(DESCRIPTOR).create();
+                }
             }
         }
 
